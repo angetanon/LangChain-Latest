@@ -1,6 +1,6 @@
 ## How to run?
 
-1. conda create -n llmapp python=3.11 -y 
+1. conda create -n llmapp python=3.14 -y 
 
 2. conda activate llmapp 
 
