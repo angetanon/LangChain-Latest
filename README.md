@@ -6,6 +6,38 @@
 
 3. pip install -r requirements.txt
 
+## LangServe demo
+
+With the project's `.venv` activated and `OPENAI_API_KEY` configured in `.env`:
+
+```powershell
+python -m pip install -r requirements.txt
+python .\10_langserve_demo.py
+```
+
+Open `http://localhost:8000/docs` for the API documentation or
+`http://localhost:8000/chain/playground/` to try the translator.
+The `langserve[server]` dependency includes FastAPI and SSE support; Uvicorn
+runs the server. Translation requests require OpenAI API credits.
+
+## LangGraph web search setup
+
+The project uses LangChain 1.4.4 and LangGraph 1.2.14, with compatible
+connector versions pinned in `requirements.txt`. After installing the
+requirements, restart the notebook kernel to avoid mixing old and new packages.
+The agent example uses `from langchain.agents import create_agent` instead of
+the deprecated `langgraph.prebuilt.create_react_agent`. Invoke the agent with
+`{"messages": [...]}` and read the returned `messages` list.
+JSON parser examples import from `langchain_core.output_parsers`, and Pydantic
+schemas import `BaseModel` and `Field` directly from `pydantic`.
+
+The Tavily search example in `11_langgraph_demo.ipynb` requires a separate
+Tavily API key; an OpenAI key cannot be used for Tavily.
+Create a key in your Tavily account and set `TAVILY_API_KEY` in your local
+`.env` file. Do not share or save the key in notebook cells or output.
+Run the environment setup cell first, then the search cell. The search cell
+reloads `.env`, so it can pick up a newly added Tavily key.
+
 ## VS Code import snippets
 
 Project snippets are defined in `.vscode/langchain.code-snippets`.
